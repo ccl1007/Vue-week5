@@ -1,13 +1,10 @@
-/* global axios bootstrap */
+/* global axios bootstrap VeeValidate VeeValidateRules VeeValidateI18n */
 const apiUrl = 'https://vue3-course-api.hexschool.io/v2'
 const apiPath = 'luku612150'
 
 // 宣告VeeValidate工具、規則、多國語系
-// eslint-disable-next-line no-undef
 const { defineRule, Form, Field, ErrorMessage, configure } = VeeValidate
-// eslint-disable-next-line no-undef
 const { required, email, min, max } = VeeValidateRules
-// eslint-disable-next-line no-undef
 const { localize, loadLocaleFromURL } = VeeValidateI18n
 
 defineRule('required', required)
@@ -141,7 +138,7 @@ const app = Vue.createApp({
         alert(res.data.message)
         // 重設表單
         this.$refs.form.resetForm()
-        this.message = ''
+        this.form.message = ''
         this.getCart()
       }).catch((err) => {
         alert(err.data.message)
@@ -176,6 +173,7 @@ app.component('product-modal', {
   methods: {
     openModal () {
       this.modal.show()
+      this.qty = ''
     },
     closeModal () {
       this.modal.hide()

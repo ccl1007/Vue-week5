@@ -126,7 +126,7 @@
                           @change="updateCartItem(item)"
                           :disabled="isLoadingItem === item.id"
                           >
-                          <option :value="num" v-for="num in 20"
+                          <option :value="num" v-for="num in 20" 
                             :key="`${num}-${item.id}`"
                             >{{ num }}
                           </option>
@@ -198,7 +198,7 @@
               <v-field
                 id="tel"
                 name="電話"
-                type="text"
+                type="tel"
                 class="form-control"
                 :class="{ 'is-invalid': errors['電話'] }"
                 placeholder="請輸入電話"
@@ -236,7 +236,7 @@
                 class="form-control"
                 cols="30"
                 rows="10"
-                v-model="message"
+                v-model="form.message"
               ></textarea>
             </div>
             <div class="text-end">
@@ -294,6 +294,7 @@
                       <select class="form-select"
                           v-model="qty" 
                           >
+                          <option value="" disabled selected >--請選擇數量--</option>
                           <option :value="num" v-for="num in 10"
                             :key="`${num}-${product.id}`"
                             >{{ num }}
